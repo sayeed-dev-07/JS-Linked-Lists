@@ -3,7 +3,7 @@ import LinkedList from "./linkedList.js";
 const list = new LinkedList();
 
 
-// ALL THIS TEST'S ARE generated FROM CHATGPT
+// ALL THIS TEST'S ARE GENERATED FROM CHATGPT
 
 
 // --- append ---
