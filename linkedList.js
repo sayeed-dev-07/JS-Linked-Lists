@@ -88,8 +88,44 @@ export default class LinkedList {
     return null;
   }
   insertAt(value, index) {
-    const newNode = new Node(value);
+    if (isNaN(index) || !Number.isInteger(index) || index < 0 || index > this.NodeLength) {
+        console.log('INVALID INDEX!!!')
+        return;
+    }
+    if (index === 0) {
+        this.prepend(value);
+        return;
+    }
+    let count = 0
+    let current = this.headNode;
+    for (let i = 0; i < index - 1; i++) {
+        current = current.nextNode;
+        
+    }
+
+    const newNode = new Node(value, current.nextNode);
+    current.nextNode = newNode;
+    this.NodeLength++;
     
+  }
+  removeAt(index){
+    if (isNaN(index) || !Number.isInteger(index) || index < 0 || index > this.NodeLength) {
+        console.log('INVALID INDEX!!!')
+        return;
+    }
+    if (index === 0) {
+        this.headNode = this.headNode.nextNode
+        this.NodeLength --;
+        return;
+    }
+    let count = 0
+    let current = this.headNode;
+    for (let i = 0; i < index - 1; i++) {
+        current = current.nextNode;
+        
+    }
+    current.nextNode = current.nextNode.nextNode;
+    this.NodeLength --;
   }
   toString() {
     let current = this.headNode;
@@ -101,20 +137,3 @@ export default class LinkedList {
     return (str += "null");
   }
 }
-const list = new LinkedList();
-list.append("helo");
-list.append("hi");
-list.append("kire");
-list.prepend("kire2");
-list.prepend("kire5");
-list.prepend("kire53");
-
-console.log(list.toString());
-console.log(list.find("kire"));
-console.log(list.contains("kirfde5")); // false
-// console.log(list.size());
-// console.log(list.head());
-// console.log(list.tail());
-// console.log(list.at(4));
-
-// console.log(list.head);
